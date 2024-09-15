@@ -1,3 +1,8 @@
+print("_"*45)
+print("WELCOME".center(45))
+print("_"*45)
+print("Plsese chose an option")
+my_list=["aman","bhasker","ravi","soraj","abhijeet","rohan"]
 def see():
     print(my_list)
 def remove():
@@ -15,13 +20,8 @@ def search():
     name = input("Enter the name: ")
     print(f"{name} is {'present' if name in my_list else 'not present'} in the list.")
 while True:
-    print("_"*45)
-    print("WELCOME".center(45))
-    print("_"*45)
-    print("Plsese chose an option")
     print("1. To see student list\n2. To remove data\n3. To search data\n4. To add new list\n5. Exit")
     select=int(input("select  option b/w in 1,2,3,4,5"))
-    my_list=["aman","bhasker","ravi","soraj","abhijeet","rohan"]
     if select==1:
         see()
     elif select==2:
@@ -29,7 +29,7 @@ while True:
     elif select==3:
         add()
     elif select==4:
-        serch()
+        search()
     elif select==5:
         exit
     else:
