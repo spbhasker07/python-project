@@ -1,6 +1,5 @@
 def see():
-    for student in my_list:
-        print(student)
+    print(my_list)
 def remove():
     list=input("enter the namer ")
     if list in my_list:
@@ -9,17 +8,12 @@ def remove():
     else:
         print("it is not prasent in list")
 def add():
-    student= int(input("Enter the number of student add"))
-    for _ in range(student):
-        name = input("Enter the name")
-        my_list.append(name)
-    print(f"Updated list: {my_list}")
-def serch():
-   name = input("Enter the name: ")
-   if name in my_list:
-        print(f"{name} is present in the list.")
-   else:
-        print(f"{name} is not present in the list.")
+    for _ in range(int(input("enter the number of student"))):
+        my_list.append(input("enter the name"))
+    print(f"see new list \n {my_list}")
+def search():
+    name = input("Enter the name: ")
+    print(f"{name} is {'present' if name in my_list else 'not present'} in the list.")
 while True:
     print("_"*45)
     print("WELCOME".center(45))
