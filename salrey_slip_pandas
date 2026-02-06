@@ -1,0 +1,76 @@
+import pandas as pd
+from datetime import date
+
+print("=" * 70)
+print("SALARY SLIP".center(70))
+print("=" * 70)
+
+# ----------- Take User Input -----------
+org = input("Enter Organization Name: ")
+name = input("Enter Employee Name: ")
+emp_id = input("Enter Employee ID: ")
+designation = input("Enter Designation/Post: ")
+department = input("Enter Department: ")
+pay_period = input("Enter Pay Period (e.g. January 2026): ")
+
+# ----------- Earnings Input -----------
+print("\n--- Enter Earnings ---")
+basic_salary = float(input("Enter Basic Salary: "))
+house_rent = float(input("Enter House Rent Allowance: "))
+medical_allowance = float(input("Enter Medical Allowance: "))
+travel_allowance = float(input("Enter Travel Allowance: "))
+
+# ----------- Deductions Input -----------
+print("\n--- Enter Deductions ---")
+pf = float(input("Enter Provident Fund (PF): "))
+professional_tax = float(input("Enter Professional Tax: "))
+income_tax = float(input("Enter Income Tax: "))
+
+# ----------- Create DataFrames -----------
+df_earnings = pd.DataFrame({
+    "Earnings": ["Basic Salary", "House Rent Allowance", "Medical Allowance", "Travel Allowance"],
+    "Amount": [basic_salary, house_rent, medical_allowance, travel_allowance]
+})
+
+df_deductions = pd.DataFrame({
+    "Deductions": ["Provident Fund (PF)", "Professional Tax", "Income Tax"],
+    "Amount": [pf, professional_tax, income_tax]
+})
+
+# ----------- Calculations -----------
+total_earnings = df_earnings["Amount"].sum()
+total_deductions = df_deductions["Amount"].sum()
+net_salary = total_earnings - total_deductions
+
+generated_date = date.today().strftime("%d-%m-%Y")
+
+# ----------- Print Salary Slip -----------
+print("\n" + "=" * 70)
+print("SALARY SLIP".center(70))
+print("=" * 70)
+
+print(f"Organization   : {org}")
+print(f"Employee Name  : {name}")
+print(f"Employee ID    : {emp_id}")
+print(f"Designation    : {designation}")
+print(f"Department     : {department}")
+print(f"Pay Period     : {pay_period}")
+print(f"Date Generated : {generated_date}")
+
+print("-" * 70)
+
+print("EARNINGS")
+print(df_earnings.to_string(index=False))
+
+print("\nDEDUCTIONS")
+print(df_deductions.to_string(index=False))
+
+print("-" * 70)
+print(f"Total Earnings   : ₹{total_earnings}")
+print(f"Total Deductions : ₹{total_deductions}")
+print("-" * 70)
+print(f"NET SALARY (IN HAND) : ₹{net_salary}")
+print("-" * 70)
+
+print("This is a system-generated salary slip and does not require signature.")
+print("=" * 70)
